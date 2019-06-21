@@ -102,11 +102,262 @@ $(document).ready(function() {
     $(this).attr('src', 'images/emailSquare.svg');
   });
 
-  $("#unicornMode").click(function() {
-    console.log("clicked");
-    unicornMode()
+	// Tech bar Hover DemoGB
+
+  $(".html1").hover(function() {
+    $(this).attr('src', 'images/htmlPurp.svg');
+		$('#techused1').text("HTML 5")
+  }, function() {
+    $(this).attr('src', 'images/html.svg');
+		$('#techused1').text("")
+  });
+  $(".css1").hover(function() {
+    $(this).attr('src', 'images/CSSPurp.svg');
+		$('#techused1').text("CSS")
+  }, function() {
+    $(this).attr('src', 'images/CSS.svg');
+		$('#techused1').text("")
+  });
+  $(".js1").hover(function() {
+    $(this).attr('src', 'images/jsPurp.svg');
+		$('#techused1').text("JavaScript")
+  }, function() {
+    $(this).attr('src', 'images/js.svg');
+		$('#techused1').text("")
+  });
+  $(".svg1").hover(function() {
+    $(this).attr('src', 'images/svgPurp.svg');
+		$('#techused1').text("Custom SVG Graphics")
+  }, function() {
+    $(this).attr('src', 'images/svg.svg');
+		$('#techused1').text("")
+  });
+  $(".ai1").hover(function() {
+    $(this).attr('src', 'images/aiPurp.svg');
+		$('#techused1').text("Adobe Illustrator")
+  }, function() {
+    $(this).attr('src', 'images/ai.svg');
+		$('#techused1').text("")
+  });
+  $(".heroku1").hover(function() {
+    $(this).attr('src', 'images/herokuPurp.svg');
+		$('#techused1').text("Heroku Cloud Platform")
+  }, function() {
+    $(this).attr('src', 'images/heroku.svg');
+		$('#techused1').text("")
+  });
+  $(".github1").hover(function() {
+    $(this).attr('src', 'images/githubPurp.svg');
+		$('#techused1').text("Github Version Control")
+  }, function() {
+    $(this).attr('src', 'images/github.svg');
+		$('#techused1').text("")
+  });
+  $(".node1").hover(function() {
+    $(this).attr('src', 'images/nodePurp.svg');
+		$('#techused1').text("Node.js Server")
+  }, function() {
+    $(this).attr('src', 'images/node.svg');
+		$('#techused1').text("")
+  });
+  $(".express1").hover(function() {
+    $(this).attr('src', 'images/expressPurp.svg');
+		$('#techused1').text("Express.js Framework")
+  }, function() {
+    $(this).attr('src', 'images/express.svg');
+		$('#techused1').text("")
+  });
+  $(".cloudinary1").hover(function() {
+    $(this).attr('src', 'images/cloudinaryPurp.svg');
+		$('#techused1').text("Cloudinary File Storage")
+  }, function() {
+    $(this).attr('src', 'images/cloudinary.svg');
+		$('#techused1').text("")
+  });
+  $(".mongo1").hover(function() {
+    $(this).attr('src', 'images/mongoPurp.svg');
+		$('#techused1').text("Mongo.db NoSQL Database")
+  }, function() {
+    $(this).attr('src', 'images/mongo.svg');
+		$('#techused1').text("")
+  });
+	// Tech bar Hover PRNKSTR
+
+  $(".html2").hover(function() {
+    $(this).attr('src', 'images/htmlPurp.svg');
+		$('#techused2').text("HTML 5")
+  }, function() {
+    $(this).attr('src', 'images/html.svg');
+		$('#techused2').text("")
+  });
+  $(".css2").hover(function() {
+    $(this).attr('src', 'images/CSSPurp.svg');
+		$('#techused2').text("CSS")
+  }, function() {
+    $(this).attr('src', 'images/CSS.svg');
+		$('#techused2').text("")
+  });
+  $(".js2").hover(function() {
+    $(this).attr('src', 'images/jsPurp.svg');
+		$('#techused2').text("JavaScript")
+  }, function() {
+    $(this).attr('src', 'images/js.svg');
+		$('#techused2').text("")
+  });
+  $(".svg2").hover(function() {
+    $(this).attr('src', 'images/svgPurp.svg');
+		$('#techused2').text("Custom SVG Graphics")
+  }, function() {
+    $(this).attr('src', 'images/svg.svg');
+		$('#techused2').text("")
+  });
+  $(".ai2").hover(function() {
+    $(this).attr('src', 'images/aiPurp.svg');
+		$('#techused2').text("Adobe Illustrator")
+  }, function() {
+    $(this).attr('src', 'images/ai.svg');
+		$('#techused2').text("")
+  });
+  $(".heroku2").hover(function() {
+    $(this).attr('src', 'images/herokuPurp.svg');
+		$('#techused2').text("Heroku Cloud Platform")
+  }, function() {
+    $(this).attr('src', 'images/heroku.svg');
+		$('#techused2').text("")
+  });
+  $(".github2").hover(function() {
+    $(this).attr('src', 'images/githubPurp.svg');
+		$('#techused2').text("Github Version Control")
+  }, function() {
+    $(this).attr('src', 'images/github.svg');
+		$('#techused2').text("")
+  });
+  $(".ruby2").hover(function() {
+    $(this).attr('src', 'images/rubyPurp.svg');
+		$('#techused2').text("Ruby")
+  }, function() {
+    $(this).attr('src', 'images/ruby.svg');
+		$('#techused2').text("")
+  });
+  $(".react2").hover(function() {
+    $(this).attr('src', 'images/reactPurp.svg');
+		$('#techused2').text("React.js Framework")
+  }, function() {
+    $(this).attr('src', 'images/react.svg');
+		$('#techused2').text("")
+  });
+  $(".rails2").hover(function() {
+    $(this).attr('src', 'images/railsPurp.svg');
+		$('#techused2').text("Ruby On Rails Server")
+  }, function() {
+    $(this).attr('src', 'images/rails.svg');
+		$('#techused2').text("")
+  });
+  $(".jquery2").hover(function() {
+    $(this).attr('src', 'images/jqueryPurp.svg');
+		$('#techused2').text("jQuery JavaScript Libruary")
+  }, function() {
+    $(this).attr('src', 'images/jquery.svg');
+		$('#techused2').text("")
+  });
+  $(".crx2").hover(function() {
+    $(this).attr('src', 'images/crxPurp.svg');
+		$('#techused2').text("Google Chrome Extension")
+  }, function() {
+    $(this).attr('src', 'images/crx.svg');
+		$('#techused2').text("")
+  });
+	// Rails 3
+
+  $(".html3").hover(function() {
+    $(this).attr('src', 'images/htmlPurp.svg');
+		$('#techused3').text("HTML 5")
+  }, function() {
+    $(this).attr('src', 'images/html.svg');
+		$('#techused3').text("")
+  });
+  $(".css3").hover(function() {
+    $(this).attr('src', 'images/CSSPurp.svg');
+		$('#techused3').text("CSS")
+  }, function() {
+    $(this).attr('src', 'images/CSS.svg');
+		$('#techused3').text("")
+  });
+  $(".js3").hover(function() {
+    $(this).attr('src', 'images/jsPurp.svg');
+		$('#techused3').text("JavaScript")
+  }, function() {
+    $(this).attr('src', 'images/js.svg');
+		$('#techused3').text("")
+  });
+  $(".svg3").hover(function() {
+    $(this).attr('src', 'images/svgPurp.svg');
+		$('#techused3').text("Custom SVG Graphics")
+  }, function() {
+    $(this).attr('src', 'images/svg.svg');
+		$('#techused3').text("")
+  });
+  $(".ai3").hover(function() {
+    $(this).attr('src', 'images/aiPurp.svg');
+		$('#techused3').text("Adobe Illustrator")
+  }, function() {
+    $(this).attr('src', 'images/ai.svg');
+		$('#techused3').text("")
+  });
+  $(".heroku3").hover(function() {
+    $(this).attr('src', 'images/herokuPurp.svg');
+		$('#techused3').text("Heroku Cloud Platform")
+  }, function() {
+    $(this).attr('src', 'images/heroku.svg');
+		$('#techused3').text("")
+  });
+  $(".github3").hover(function() {
+    $(this).attr('src', 'images/githubPurp.svg');
+		$('#techused3').text("Github Version Control")
+  }, function() {
+    $(this).attr('src', 'images/github.svg');
+		$('#techused3').text("")
+  });
+  $(".ruby3").hover(function() {
+    $(this).attr('src', 'images/rubyPurp.svg');
+		$('#techused3').text("Ruby")
+  }, function() {
+    $(this).attr('src', 'images/ruby.svg');
+		$('#techused3').text("")
+  });
+  $(".react3").hover(function() {
+    $(this).attr('src', 'images/reactPurp.svg');
+		$('#techused3').text("React.js Framework")
+  }, function() {
+    $(this).attr('src', 'images/react.svg');
+		$('#techused3').text("")
+  });
+  $(".rails3").hover(function() {
+    $(this).attr('src', 'images/railsPurp.svg');
+		$('#techused3').text("Ruby On Rails Server")
+  }, function() {
+    $(this).attr('src', 'images/rails.svg');
+		$('#techused3').text("")
+  });
+  $(".azure3").hover(function() {
+    $(this).attr('src', 'images/azurePurp.svg');
+		$('#techused3').text("Microsoft Azure Web Services")
+  }, function() {
+    $(this).attr('src', 'images/azure.svg');
+		$('#techused3').text("")
   });
 
+
+  $("#unicornMode").click(function() {
+    unicornMode()
+  });
+	//
+	// $("#icons").hover(function() {
+	// 	$data = $(this).attr('alt')
+	// 	$('#techused3').text($data)
+	// }, function() {
+  //   // $("techused1") = "";
+  // });
 
 });
 
@@ -136,12 +387,10 @@ const unicornMode = () => {
     $('div').css('background-color', getRandomColor());
     console.log(arr[index++ % arr.length]);
   }, 2000)
-
   var elements = $("p, h1, h2, h3, h4, h5, h6")
   for (let i = 0; i < elements.length; i += 1) {
     generateRainbowText(elements[i]);
   }
-
   function generateRainbowText(element) {
     var text = element.innerText;
     element.innerHTML = "";
