@@ -8,12 +8,23 @@
 
 document.addEventListener("DOMContentLoaded", function () {
   /// Event listeners ///
-  if (isMobileDevice()){
-    console.log(navigator.userAgent)
-  }
+  // if (isMobileDevice()){
+  //   if (navigator.userAgent.includes('ipad'))
+  // }
+
+  console.log(navigator)
   // Paralax Effect 
+  document.addEventListener("touchmove",() =>{
+    if (window.pageYOffset < 0 ) window.scrollTo(0, 0); // this is to stop safari users on mobile over scrolling
+    let parent = document.getElementById('parallax-container');
+    let children = parent.getElementsByTagName('div');
+    for (let i = 0; i < children.length; i++) {
+      children[i].style.transform = 'translateY(-' + (window.pageYOffset * i / children.length) + 'px)';
+    }
+  }, false);
+
   window.addEventListener('scroll', () => {
-    if (window.pageYOffset < 0 ) window.pageYOffset = 0; // this is to stop safari users on mobile over scrolling
+    if (window.pageYOffset < 0 ) window.scrollTo(0, 0); // this is to stop safari users on mobile over scrolling
     let parent = document.getElementById('parallax-container');
     let children = parent.getElementsByTagName('div');
     for (let i = 0; i < children.length; i++) {
