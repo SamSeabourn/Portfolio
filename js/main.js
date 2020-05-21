@@ -9,7 +9,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   /// Event listeners ///
   if (isMobileDevice()){
-    alert('yo')
+    console.log(navigator.userAgent)
   }
   // Paralax Effect 
   window.addEventListener('scroll', () => {
