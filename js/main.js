@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   console.log(navigator)
   // Paralax Effect 
-  document.addEventListener("touchmove", function(e){ e.preventDefault(); }, false)
+  window.addEventListener("touchmove", function(e){ e.preventDefault(); }, false)
 
   window.addEventListener('scroll', () => {
     var scrollY = window.pageYOffset < 0 ? 0 : window.pageYOffset;; // this is to stop safari users on mobile over scrolling

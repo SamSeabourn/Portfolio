@@ -5,7 +5,6 @@ body {
     font-family: "Open Sans", sans-serif;
     height: 100%;
     width: 100%;
-    overflow: auto;
 }
 .samsName {
     text-align: center;
@@ -76,6 +75,10 @@ body {
     z-index: 10;
     position: absolute;
     top: 98vw;
+    width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch
 }
 .aboutMe {
     top: 109vw;
