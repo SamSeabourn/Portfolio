@@ -15,20 +15,20 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log(navigator)
   // Paralax Effect 
   document.addEventListener("touchmove",() =>{
-    if (window.pageYOffset < 0 ) window.scrollTo(0, 0); // this is to stop safari users on mobile over scrolling
+    var scrollY = window.pageYOffset < 0 ? 0 : window.pageYOffset;; // this is to stop safari users on mobile over scrolling
     let parent = document.getElementById('parallax-container');
     let children = parent.getElementsByTagName('div');
     for (let i = 0; i < children.length; i++) {
-      children[i].style.transform = 'translateY(-' + (window.pageYOffset * i / children.length) + 'px)';
+      children[i].style.transform = 'translateY(-' + (scrollY * i / children.length) + 'px)';
     }
   }, false);
 
   window.addEventListener('scroll', () => {
-    if (window.pageYOffset < 0 ) window.scrollTo(0, 0); // this is to stop safari users on mobile over scrolling
+    var scrollY = window.pageYOffset < 0 ? 0 : window.pageYOffset;; // this is to stop safari users on mobile over scrolling
     let parent = document.getElementById('parallax-container');
     let children = parent.getElementsByTagName('div');
     for (let i = 0; i < children.length; i++) {
-      children[i].style.transform = 'translateY(-' + (window.pageYOffset * i / children.length) + 'px)';
+      children[i].style.transform = 'translateY(-' + (scrollY * i / children.length) + 'px)';
     }
   }, false)
 
