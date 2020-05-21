@@ -8,7 +8,9 @@
 
 document.addEventListener("DOMContentLoaded", function () {
   /// Event listeners ///
-
+  if (isMobileDevice()){
+    alert('yo')
+  }
   // Paralax Effect 
   window.addEventListener('scroll', () => {
     if (window.pageYOffset < 0 ) window.pageYOffset = 0; // this is to stop safari users on mobile over scrolling
@@ -79,6 +81,10 @@ function generateRainbowText(element) {
     element.appendChild(charElem);
   }
 }
+
+function isMobileDevice() {
+  return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+};
 
 
 function startUnicornMode() {
