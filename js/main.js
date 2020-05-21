@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Paralax Effect 
   window.addEventListener('scroll', () => {
+    if (window.pageYOffset < 0 ) window.pageYOffset = 0; // this is to stop safari users on mobile over scrolling
     let parent = document.getElementById('parallax-container');
     let children = parent.getElementsByTagName('div');
     for (let i = 0; i < children.length; i++) {
