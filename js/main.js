@@ -33,15 +33,19 @@ function changeColors(svgArray) {
 
 function random_rgb() {
     var colors = []
-    var lowerValueInt = Math.floor(Math.random() * 3); // returns random index
+    var randomIndex = Math.floor(Math.random() * 3); // returns random index to make brighter color
     for (let i = 0; i < 3; i++) {
-      if (i === lowerValueInt) {
-        colors.push(Math.floor(Math.random() * 10 )) // Picks either RG or B to be lower promoting brighter colors
+      if (i === randomIndex) {
+        colors.push(randomInt(70, 255)) 
       } else {
-        colors.push(Math.floor(Math.random() * 255 ))
+        colors.push(randomInt(0, 255))
       } 
     }
     return `rgb(${colors[0]}, ${colors[1]}, ${colors[2]})`
+}
+
+function randomInt(min, max) { // min and max included 
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 function shiftColor(color ,upOrDown){
