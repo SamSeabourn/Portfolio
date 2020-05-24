@@ -1,0 +1,47 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+    /* border: red solid 1px; */
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+    vertical-align: baseline;
+    min-width: 375px;
+    height: 100vh;
+    width: 100vw;
+}
+svg {
+    display: block;
+}
+
+#body-lock{
+    position: fixed;
+}
+
+.sam-seabourn-container {
+        margin: left;
+        margin: 2% 24vw;
+        width: 52vw;
+}
+
+.options-menu {
+    position: absolute;
+    width: 36vw;
+    right: -3vw;
+    top: 56vh;
+}
+
+.color-menu {
+    position: absolute;
+    width: 30vw;
+    top: -8vw;
+    left: -7vw;
+}
+
+.random-cubes{
+
+}
