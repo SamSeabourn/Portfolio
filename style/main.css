@@ -23,35 +23,71 @@ svg {
 }
 
 .sam-seabourn-container {
-    margin: -9% 14vw;
-    width: 71vw;
+    position: absolute
+    /* margin: -9% 14vw;
+    width: 71vw; */
 }
 
 .options-menu {
     position: absolute;
-    width: 36vw;
+    /* width: 36vw;
     right: -3vw;
-    top: 56vh;
+    top: 56vh; */
 }
 
 .color-menu {
     position: absolute;
-    width: 30vw;
+    /* width: 30vw;
     top: -8vw;
-    left: -7vw;
+    left: -7vw; */
 }
 
 .random-cubes{
-
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
 }
-/* Smartphones (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    /* Styles */
-    }
+.cube {
+    position: absolute;
+}
+
     
-    /* Smartphones (landscape) ----------- */
     @media only screen and (min-width : 321px) {
-    /* Styles */
+        /* Smartphones (landscape) ----------- */
+        .sam-seabourn-container {
+            width: 111vw;
+            top: -48vh;
+            left: -5vw;
+        }
+        .options-menu {
+            top: 31vh;
+            width: 65vw;
+            right: -11vw;
+        }
+        .color-menu {
+            width: 45vw;
+            top: -30vh;
+            left: -15vw;
+        }
+        .cube {
+            width: 28vw
+        }
+        .cube1 {
+            top: 56vh;
+            left: -5vw;        
+        }
+        .cube2 {
+            top: 5vh;
+            left: 2vw;
+        }
+        .cube3 {
+            top: -10vh;
+            left: 73vw;
+        }
+        .cube4 {
+            top: 40vh;
+            left: 53vw;
+        }
     }
     
     /* Smartphones (portrait) ----------- */
