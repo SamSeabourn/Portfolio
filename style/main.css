@@ -3,7 +3,15 @@
     /* border: red solid 1px; */
 }
 
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+  }
 
+ /* Hide scrollbars */
 /* html, body { margin:0; padding:0; overflow:hidden }  */
 /* svg { position:fixed; top:0; left:0; height:100%; width:100% } */
 
@@ -13,7 +21,7 @@
         position: fixed;
         top: 18%;
         left: 0;
-        width: 97%;
+        width: 95.5%;
     }
 }
 
@@ -21,7 +29,21 @@ path {
     touch-action: none;
 }
 
-@media (orientation: portrait) {
+
+
+
+@media (orientation: portrait)  {
+    .factory {
+        height: 78%;
+        position: fixed;
+        top: 18%;
+        left: -5%;
+        width: 140%;
+        margin: -16%;
+    }
+}
+
+@media (orientation: portrait) and (min-width:420px) {
     .factory {
         height: 54%;
         position: fixed;
@@ -32,11 +54,15 @@ path {
     }
 }
 
+
+
+
 #fadeIn {
+    overflow: hidden;
     position: absolute;
     background-color: white;
-    height: 99%;
-    width: 99%;
+    height: 100%;
+    width: 100%;
     z-index: 10;
     opacity: 1;
 }
