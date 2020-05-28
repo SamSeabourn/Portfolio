@@ -7,6 +7,7 @@ var staticColorTwoElements = document.getElementsByClassName("staticColorTwo")
 
 // Colors 
 var colorIdArray = []
+var color0 = { face1 : "", face2 : "", face3 : "" }
 var color1 = { face1 : "", face2 : "", face3 : "" }
 var color2 = { face1 : "", face2 : "", face3 : "" }
 var selectedColor = null
@@ -139,15 +140,24 @@ function drawColors(selectedColor, tile){
       }
 }
 
+
+function redrawTiles(){
+    for (let i = 0; i < allTiles.length; i++) {
+       renderWithShading(color0 ,allTiles[i])    
+    }
+}
+
 function initializeColor(colorOjbect, faceTwoRBG){
     colorOjbect.face2 = faceTwoRBG;
     colorOjbect.face3 = shiftColor(faceTwoRBG, "shiftDown")
     colorOjbect.face1 = shiftColor(faceTwoRBG, "shiftUp" )
 }
 
-
+initializeColor(color0, "rgb(172,172,172)")
 initializeColor(color1, randomRGB())
 initializeColor(color2, randomRGB())
+
+redrawTiles()
 
 initializeStaticColors(staticColorOneElements)
 initializeStaticColors(staticColorTwoElements)
