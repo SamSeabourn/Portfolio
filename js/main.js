@@ -30,6 +30,11 @@ function initializeTileEvents(allTiles) {
                 drawColors(selectedColor, event.target )
             }
         });
+
+        document.body.addEventListener('touchmove',( event ) => {
+            drawColors(selectedColor, event.target ) // alert pageX coordinate of touch point
+        }, false)
+
     }
 }
 
