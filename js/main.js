@@ -12,6 +12,8 @@ var color1 = { face1 : "", face2 : "", face3 : "" }
 var color2 = { face1 : "", face2 : "", face3 : "" }
 var selectedColor = null
 
+// Loader
+var loaderDiv = document.getElementById('fadeIn')
 
 // buttons
 var changeColorOneBtn = document.getElementById("changeColorOne") 
@@ -153,19 +155,26 @@ function initializeColor(colorOjbect, faceTwoRBG){
     colorOjbect.face1 = shiftColor(faceTwoRBG, "shiftUp" )
 }
 
-initializeColor(color0, "rgb(172,172,172)")
-initializeColor(color1, randomRGB())
-initializeColor(color2, randomRGB())
+function fadeLoader() {
+    console.log(loaderDiv)
+    loaderDiv.classList.add("ready");
+    setTimeout( () => { loaderDiv.remove() }, 3000);
+}
 
-redrawTiles()
+initializeColor(color0, "rgb(172,172,172)");
+initializeColor(color1, randomRGB());
+initializeColor(color2, randomRGB());
 
-initializeStaticColors(staticColorOneElements)
-initializeStaticColors(staticColorTwoElements)
+redrawTiles();
 
-initializeTileEvents(allTiles)
-initializeChangeColorOneButton()
-initializeChangeColorTwoButton()
-initializeSelectColorOneBrushBtn()
+initializeStaticColors(staticColorOneElements);
+initializeStaticColors(staticColorTwoElements);
+
+initializeTileEvents(allTiles);
+initializeChangeColorOneButton();
+initializeChangeColorTwoButton();
+initializeSelectColorOneBrushBtn();
+fadeLoader();
 
 
 // function updateColors(rgbValue){

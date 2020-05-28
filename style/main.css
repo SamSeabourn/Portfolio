@@ -5,6 +5,46 @@
 
 
 html, body { margin:0; padding:0; overflow:hidden } 
-svg { position:fixed; top:0; left:0; height:100%; width:100% }
+/* svg { position:fixed; top:0; left:0; height:100%; width:100% } */
 
-    
+@media (orientation: landscape) {
+    .factory {
+        height: 54%;
+        position: fixed;
+        top: 18%;
+        left: 0;
+        width: 91%;
+    }
+}
+
+@media (orientation: portrait) {
+    .factory {
+        position:fixed;
+         top:0; 
+         left:0; 
+         height:100%; 
+         width:100%
+    }
+}
+
+#fadeIn {
+    position: absolute;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    opacity: 1;
+}
+
+#fadeIn.ready {
+    -webkit-transition: opacity 3s ease-in-out;
+    -moz-transition: opacity 3s ease-in-out;
+    -ms-transition: opacity 3s ease-in-out;
+    -o-transition: opacity 3s ease-in-out;
+    transition: opacity 3s;
+     opacity: 0;
+}
+
+.factory {
+    z-index: 0;
+}
