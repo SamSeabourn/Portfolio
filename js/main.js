@@ -31,7 +31,7 @@ function initializeTileEvents(allTiles) {
             }
         });
 
-        document.body.addEventListener('touchmove',( event ) => {
+        allTiles[i].addEventListener('touchmove',( event ) => {
             drawColors(selectedColor, event.target ) // alert pageX coordinate of touch point
         }, false)
 
@@ -103,14 +103,17 @@ function initializeStaticColors(){
      if (svgElement.classList.contains("f1")){
         svgElement.setAttribute('fill', color.face1)
         svgElement.setAttribute('stroke', color.face1)
+        svgElement.setAttribute('stroke-width', "0px")
       }
       else if (svgElement.classList.contains("f3")){
         svgElement.setAttribute('fill', color.face3)
         svgElement.setAttribute('stroke', color.face3)
+        svgElement.setAttribute('stroke-width', "0px")
       }
       else {
         svgElement.setAttribute('fill', color.face2)
         svgElement.setAttribute('stroke', color.face2)
+        svgElement.setAttribute('stroke-width', "0px")
       }
   }
   
