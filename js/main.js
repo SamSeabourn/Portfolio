@@ -1,5 +1,6 @@
 //Tile Array
-var allTiles = document.getElementsByClassName("pnt") // pnt stands for paintable. Trying to reduce the size of the HTML
+var allTiles = document.getElementsByClassName("paintable") // pnt stands for paintable. Trying to reduce the size of the HTML
+var tileCount = allTiles.length
 
 //Static Colors
 var staticColorOneElements = document.getElementsByClassName("staticColorOne")
@@ -7,13 +8,102 @@ var staticColorTwoElements = document.getElementsByClassName("staticColorTwo")
 
 // Colors 
 var colorIdArray = []
-var color0 = { face1 : "", face2 : "", face3 : "" }
+var color0 = { face1 : "#ffffff", face2 : "#acacac", face3 : "#595959" }
 var color1 = { face1 : "", face2 : "", face3 : "" }
 var color2 = { face1 : "", face2 : "", face3 : "" }
 var selectedColor = null
 
+// Preset Colors
+var randomColours = [
+    {
+        face1: "#8e8879",
+        face2: "#7d786a",
+        face3: "#7d786a"
+    },
+    {
+        face1: "#9f0915",
+        face2: "#8e0813",
+        face3: "#7d0711"
+    },
+    {
+        face1: "#0471d0",
+        face2: "#0465ba",
+        face3: "#0359a3"
+    },
+    {
+        face1: "#73319f",
+        face2: "#672c8e",
+        face3: "#5a267d"
+    },
+    {
+        face1: "#f4f400",
+        face2: "#dada00",
+        face3: "#c0c000"
+    },
+    {
+        face1: "#d09937",
+        face2: "#ba8932",
+        face3: "#a3782c"
+    },
+    {
+        face1: "#0ab654",
+        face2: "#09a34b",
+        face3: "#088f42"
+    },
+    {
+        face1: "#088f42",
+        face2: "#088f42",
+        face3: "#00593f"
+    },
+    {
+        face1: "#e7b2a0",
+        face2: "#ce9f8f",
+        face3: "#b58c7e"
+    },
+    {
+        face1: "#b58c7e",
+        face2: "#ce3439",
+        face3: "#b52e32"
+    },
+    {
+        face1: "#00f4f4",
+        face2: "#00dada",
+        face3: "#00c0c0"
+    },
+    {
+        face1: "#f400be",
+        face2: "#da00a9",
+        face3: "#a50080"
+    },
+    {
+        face1: "#e7b65a",
+        face2: "#cea351",
+        face3: "#b58f47"
+    },
+    {
+        face1: "#e79805",
+        face2: "#ce8804",
+        face3: "#b57804"
+    },
+    {
+        face1: "#39e765",
+        face2: "#33ce5b",
+        face3: "#279c45"
+    },
+]
+
 // Loader
 var loaderDiv = document.getElementById('fadeIn')
+
+
+var mouseDown = 0;
+
+document.body.onmousedown = function() { 
+  ++mouseDown;
+}
+document.body.onmouseup = function() {
+  --mouseDown;
+}
 
 // buttons
 var changeColorOneBtn = document.getElementById("changeColorOne") 
@@ -22,36 +112,50 @@ var removeColorBrushBtn = document.getElementById("removeColorBrush")
 var selectColorOneBrushBtn = document.getElementById("selectColorOneBrush" )
 var selectColorTwoBrushBtn = document.getElementById("selectColorTwoBrush")
 
+function indexTiles() {
+    for (let i = 0; i < tileCount; i++) {
+        allTiles[i].setAttribute('data-tileIndex', "" + i + "")
+        allTiles[i].setAttribute('data-color', "" + i + "")
+    }
+}
+
+function setSavedArt(colorArray) {
+    for (let i = 0; i < tileCount; i++) {
+        allTiles[i].setAttribute('data-color', "" + i + "")
+    }
+}
+
 // Event Listeners
 function initializeTileEvents(allTiles) {
-    for (let i = 0; i < allTiles.length; i++) {
+    for (let i = 0; i < tileCount; i++) {
         allTiles[i].addEventListener("mouseover",( event ) => {
-            if(event.buttons == 1 || event.buttons == 3) {
-                drawColors(selectedColor, event.target )
+            if (mouseDown){
+                renderWithShading(selectedColor, event.target)
+                // drawColors(selectedColor, event.target )
             }
+            return
         });
 
-        allTiles[i].addEventListener('touchmove',( event ) => {
-            drawColors(selectedColor, event.target ) // alert pageX coordinate of touch point
-        }, false)
+        // allTiles[i].addEventListener('touchmove',( event ) => {
+        //     drawColors(selectedColor, event.target ) // alert pageX coordinate of touch point
+        // }, false)
 
     }
 }
 
 
+
+
 function initializeChangeColorOneButton() {
     changeColorOneBtn.addEventListener("click", ( event ) => {
-        initializeColor(color1, randomRGB())
-        initializeStaticColors(staticColorOneElements)
-        initializeStaticColors(staticColorTwoElements)
-        
+        color1 = randomRGB()
+        setStaticColors()
     })
 }
 function initializeChangeColorTwoButton() {
     changeColorTwoBtn.addEventListener("click", ( event ) => {
-        initializeColor(color2, randomRGB())
-        initializeStaticColors(staticColorOneElements)
-        initializeStaticColors(staticColorTwoElements)
+        color2 = randomRGB()
+        setStaticColors()
     })
 }
 
@@ -75,12 +179,12 @@ function initializeSelectColorOneBrushBtn() {
     })
 }
 
-function initializeStaticColors(){
+function setStaticColors(){
     for (let i = 0; i < staticColorOneElements.length; i++) {
         renderWithShading(color1, staticColorOneElements[i])
     }
     for (let i = 0; i < staticColorTwoElements.length; i++) {
-        renderWithShading(color2, staticColorTwoElements[i])
+        renderWithShading(color2, "" )
     }
 }
 
@@ -100,68 +204,47 @@ function initializeStaticColors(){
 //   }
 
   function renderWithShading(color, svgElement) {
-     if (svgElement.classList.contains("f1")){
-        svgElement.setAttribute('fill', color.face1)
-        svgElement.setAttribute('stroke', color.face1)
-        svgElement.setAttribute('stroke-width', "0px")
-      }
-      else if (svgElement.classList.contains("f3")){
-        svgElement.setAttribute('fill', color.face3)
-        svgElement.setAttribute('stroke', color.face3)
-        svgElement.setAttribute('stroke-width', "0px")
-      }
-      else {
-        svgElement.setAttribute('fill', color.face2)
-        svgElement.setAttribute('stroke', color.face2)
-        svgElement.setAttribute('stroke-width', "0px")
-      }
+    // debugger;
+    switch(svgElement.dataset.face) {
+        case "1": {
+            svgElement.style.fill = color.face1;
+            // svgElement.setAttribute('stroke', color.face1)
+            // svgElement.setAttribute('stroke-width', "0px")
+            break;
+        }
+        case "2": {
+            svgElement.style.fill = color.face2;
+            // svgElement.setAttribute('fill', color.face2)
+            // svgElement.setAttribute('stroke', color.face2)
+            // svgElement.setAttribute('stroke-width', "0px")
+            break;
+        }
+        case "3": {
+            svgElement.style.fill = color.face3;
+            // svgElement.setAttribute('fill', color.face3)
+            // svgElement.setAttribute('stroke', color.face3)
+            // svgElement.setAttribute('stroke-width', "0px")
+            break;
+        }
+        default: {
+            console.log("error")
+            console.log(svgElement)
+        }
+    }
   }
   
-  function randomRGB() {
-      var colors = []
-      var randomIndex = Math.floor(Math.random() * 3); // returns random index to make brighter color
-      for (let i = 0; i < 3; i++) {
-        if (i === randomIndex) {
-          colors.push(randomInt(70, 255)) 
-        } else {
-          colors.push(randomInt(0, 255))
-        } 
-      }
-      return `rgb(${colors[0]}, ${colors[1]}, ${colors[2]})`
-  }
-  
-  function randomInt(min, max) { // min and max included 
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
-
-function drawColors(selectedColor, tile){
-    if (selectedColor == null) return
-    if (tile.classList.contains("f1")){
-        tile.setAttribute('fill', selectedColor.face1)
-        tile.setAttribute('stroke', selectedColor.face1)
-      }
-      else if (tile.classList.contains("f3")){
-        tile.setAttribute('fill', selectedColor.face3)
-        tile.setAttribute('stroke', selectedColor.face3)
-      }
-      else {
-        tile.setAttribute('fill', selectedColor.face2)
-        tile.setAttribute('stroke', selectedColor.face2)
-      }
+function randomRGB() {
+    return randomColours[Math.floor(Math.random() * randomColours.length )]
 }
 
 
+
 function redrawTiles(){
-    for (let i = 0; i < allTiles.length; i++) {
+    for (let i = 0; i < tileCount; i++) {
        renderWithShading(color0 ,allTiles[i])    
     }
 }
 
-function initializeColor(colorOjbect, faceTwoRBG){
-    colorOjbect.face2 = faceTwoRBG;
-    colorOjbect.face3 = shiftColor(faceTwoRBG, "shiftDown")
-    colorOjbect.face1 = shiftColor(faceTwoRBG, "shiftUp" )
-}
 
 function fadeLoader() {
     console.log(loaderDiv)
@@ -169,14 +252,16 @@ function fadeLoader() {
     setTimeout( () => { loaderDiv.remove() }, 3000);
 }
 
-initializeColor(color0, "rgb(172,172,172)");
-initializeColor(color1, randomRGB());
-initializeColor(color2, randomRGB());
+indexTiles();
+
+// initializeColor(color0, );
+// initializeColor(color1, randomRGB());
+// initializeColor(color2, randomRGB());
 
 redrawTiles();
 
-initializeStaticColors(staticColorOneElements);
-initializeStaticColors(staticColorTwoElements);
+// setStaticColors(staticColorOneElements);
+// setStaticColors(staticColorTwoElements);
 
 initializeTileEvents(allTiles);
 initializeChangeColorOneButton();
@@ -209,31 +294,31 @@ fadeLoader();
 
 
 
-function shiftColor(color ,upOrDown){
-  var colorArray = color.substring(4).slice(0, -1).split(",")
-  var newColor = []
-  var range = 80
-  var shiftDown;
-  if (upOrDown !== "shiftUp") shiftDown = true;
+// function shiftColor(color ,upOrDown){
+//   var colorArray = color.substring(4).slice(0, -1).split(",")
+//   var newColor = []
+//   var range = 80
+//   var shiftDown;
+//   if (upOrDown !== "shiftUp") shiftDown = true;
 
-  for (let i = 0; i < colorArray.length; i++) {
-    var color = parseInt(colorArray[i])
-    if (shiftDown){
-      if (color - range < 0 ) {
-        newColor.push(0)
-      } else {
-        newColor.push(color - range)
-      }
-    } else {
-      if (color + range > 255 ) {
-        newColor.push(255)
-      } else {
-        newColor.push(color + range)
-      }
-    }
-  }
-  return `rgb(${newColor[0]},${newColor[1]},${newColor[2]})`
-}
+//   for (let i = 0; i < colorArray.length; i++) {
+//     var color = parseInt(colorArray[i])
+//     if (shiftDown){
+//       if (color - range < 0 ) {
+//         newColor.push(0)
+//       } else {
+//         newColor.push(color - range)
+//       }
+//     } else {
+//       if (color + range > 255 ) {
+//         newColor.push(255)
+//       } else {
+//         newColor.push(color + range)
+//       }
+//     }
+//   }
+//   return `rgb(${newColor[0]},${newColor[1]},${newColor[2]})`
+// }
 
 // changeColors(allTiles, "rgb(172,172,172)") //Setting to grey
 
