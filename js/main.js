@@ -1,5 +1,10 @@
 //Tile Array
-let allTiles = document.getElementsByClassName("pnt") // pnt stands for paintable. Trying to reduce the size of the HTML
+var allTiles = document.getElementsByClassName("pnt") // pnt stands for paintable. Trying to reduce the size of the HTML
+
+//Static Colors
+var staticColorOneElements = document.getElementsByClassName("staticColorOne")
+var staticColorTwoElements = document.getElementsByClassName("staticColorTwo")
+
 // Colors 
 var colorIdArray = []
 var color1 = { face1 : "", face2 : "", face3 : "" }
@@ -18,7 +23,9 @@ var selectColorTwoBrushBtn = document.getElementById("selectColorTwoBrush")
 function initializeTileEvents(allTiles) {
     for (let i = 0; i < allTiles.length; i++) {
         allTiles[i].addEventListener("mouseover",( event ) => {
-            drawColors(selectedColor, event.target )
+            if(event.buttons == 1 || event.buttons == 3) {
+                drawColors(selectedColor, event.target )
+            }
         });
     }
 }
@@ -26,50 +33,77 @@ function initializeTileEvents(allTiles) {
 
 function initializeChangeColorOneButton() {
     changeColorOneBtn.addEventListener("click", ( event ) => {
-        // var newColor = randomRGB()
+        initializeColor(color1, randomRGB())
+        initializeStaticColors(staticColorOneElements)
+        initializeStaticColors(staticColorTwoElements)
+        
     })
 }
 function initializeChangeColorTwoButton() {
     changeColorTwoBtn.addEventListener("click", ( event ) => {
-        console.log(event.target)
+        initializeColor(color2, randomRGB())
+        initializeStaticColors(staticColorOneElements)
+        initializeStaticColors(staticColorTwoElements)
     })
 }
+
 function initializeSelectColorOneBrushBtn() {
     selectColorOneBrushBtn.addEventListener("click", ( event ) => {
-        event.target.setAttribute("stroke-width", "20px")
+        event.target.setAttribute("stroke-width", "2px")
+        event.target.setAttribute("stroke", "rgb(0,0,0)")
         event.target.setAttribute("opacity", "1")
-
+        event.target.setAttribute("fill", "rgba(0,0,0,0)")
         selectedColor = color1
     })
 }
 
-initializeTileEvents(allTiles)
-initializeChangeColorOneButton()
-initializeChangeColorTwoButton()
-initializeSelectColorOneBrushBtn()
+function initializeSelectColorOneBrushBtn() {
+    selectColorTwoBrushBtn.addEventListener("click", ( event ) => {
+        event.target.setAttribute("stroke-width", "2px")
+        event.target.setAttribute("stroke", "rgb(0,0,0)")
+        event.target.setAttribute("opacity", "1")
+        event.target.setAttribute("fill", "rgba(0,0,0,0)")
+        selectedColor = color2
+    })
+}
+
+function initializeStaticColors(){
+    for (let i = 0; i < staticColorOneElements.length; i++) {
+        renderWithShading(color1, staticColorOneElements[i])
+    }
+    for (let i = 0; i < staticColorTwoElements.length; i++) {
+        renderWithShading(color2, staticColorTwoElements[i])
+    }
+}
+
+
 
 
 // Color functions
-function changeColors(svgArray, color) {
-    var mediumColor = color
-    var darkColor = shiftColor(mediumColor, "shiftDown")
-    var lightColor = shiftColor(mediumColor, "shiftUp" )
+// function changeColors(svgArray, color) {
+//     var mediumColor = color
+//     var darkColor = shiftColor(mediumColor, "shiftDown")
+//     var lightColor = shiftColor(mediumColor, "shiftUp" )
   
-    for (let i = 0; i < svgArray.length; i++) {
-      var color = svgArray[i]
-      if (color.classList.contains("f1")){
-        color.setAttribute('fill', lightColor)
-        color.setAttribute('stroke', lightColor)
+//     for (let i = 0; i < svgArray.length; i++) {
+//       var color = svgArray[i]
+     
+//     }
+//   }
+
+  function renderWithShading(color, svgElement) {
+     if (svgElement.classList.contains("f1")){
+        svgElement.setAttribute('fill', color.face1)
+        svgElement.setAttribute('stroke', color.face1)
       }
-      else if (color.classList.contains("f3")){
-        color.setAttribute('fill', darkColor)
-        color.setAttribute('stroke', darkColor)
+      else if (svgElement.classList.contains("f3")){
+        svgElement.setAttribute('fill', color.face3)
+        svgElement.setAttribute('stroke', color.face3)
       }
       else {
-        color.setAttribute('fill', mediumColor)
-        color.setAttribute('stroke', mediumColor)
+        svgElement.setAttribute('fill', color.face2)
+        svgElement.setAttribute('stroke', color.face2)
       }
-    }
   }
   
   function randomRGB() {
@@ -113,13 +147,21 @@ function initializeColor(colorOjbect, faceTwoRBG){
 
 
 initializeColor(color1, randomRGB())
-initializeColor(color2,"rgb(172,172,172)")
+initializeColor(color2, randomRGB())
+
+initializeStaticColors(staticColorOneElements)
+initializeStaticColors(staticColorTwoElements)
+
+initializeTileEvents(allTiles)
+initializeChangeColorOneButton()
+initializeChangeColorTwoButton()
+initializeSelectColorOneBrushBtn()
 
 
-function updateColors(rgbValue){
-    darkColor = shiftColor(mediumColor, "shiftDown")
-    lightColor = shiftColor(mediumColor, "shiftUp" )
-}
+// function updateColors(rgbValue){
+//     darkColor = shiftColor(mediumColor, "shiftDown")
+//     lightColor = shiftColor(mediumColor, "shiftUp" )
+// }
 
 
 
