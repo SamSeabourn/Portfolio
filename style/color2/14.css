@@ -1,11 +1,18 @@
 .f1c2 {
     fill: #8520cf;
+    stroke: #8520cf;
+    stroke-width: 0.1%;
 }
 
 .f2c2 {
     fill: #580d81;
+    stroke: #580d81;
+    stroke-width: 0.1%;
+
 }
 
 .f3c2 {
     fill: #32034b;
+    stroke: #32034b;
+    stroke-width: 0.1%;
 }

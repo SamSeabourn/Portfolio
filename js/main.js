@@ -8,8 +8,7 @@ function buildTileArray() {
     var allPaths = document.getElementsByTagName('path')
     var pathCount = allPaths.length // using the dot notation once to save as a variable stops referencing it 1000s of times
     for (let i = 0; i < pathCount; i++) {
-        if (allPaths[i].dataset.paintable === "true" )  tileArray.push(allPaths[i])
-        
+        if (allPaths[i].dataset.paintable === "true" )  tileArray.push(allPaths[i])   
     }
 }
 buildTileArray()
@@ -62,7 +61,7 @@ function fadeLoader() {
 
 // paint functions
 var currentColor1Pallete = 0
-var currentColor2Pallete = 1
+var currentColor2Pallete = 4
 var color1CSSFile = document.getElementById('color1Pallete')
 var color2CSSFile = document.getElementById('color2Pallete')
 var changeColor1Btn = document.getElementById("changeColor1")
@@ -70,6 +69,7 @@ var changeColor2Btn = document.getElementById("changeColor2")
 var color1selected = document.getElementById("selectColor1")
 var color2selected = document.getElementById("selectColor2")
 var color0selected = document.getElementById("selectColor0")
+var cleanAllBtn = document.getElementById("cleanAll")
 
 
 function updateColor1Pallete(){
@@ -150,6 +150,18 @@ color2selected.addEventListener("click", (event) => {
 
 color0selected.addEventListener("click", (event) => {
     swapBrushes(0, event)
+});
+
+cleanAllBtn.addEventListener("click", () => {
+    for (let i = 0; i < tileCount; i++) {
+        if (tileArray[i].dataset.color !== 0) {
+            newColorArray[i] = 0
+            updateTiles()
+        }
+    }
+
+
+
 });
 
 

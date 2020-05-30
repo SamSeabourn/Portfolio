@@ -11,6 +11,12 @@
 background: rgba(0, 0, 0, 0.2);
 }
 
+html, body, svg {
+    width: 90%;
+    height: 90%;
+    margin: 5%;
+  }
+
 
 .selected {
     stroke-width: 0.2em;
@@ -20,10 +26,11 @@ background: rgba(0, 0, 0, 0.2);
 
 }
 .nav-option {
-    fill: rgba(0,0,0,0)
+    stroke: none !important;
 }
 
 .nav-option:hover {
+    stroke: none !important;
     animation: flash 2s linear infinite;
 }
 
