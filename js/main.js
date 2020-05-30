@@ -27,7 +27,7 @@ var newColorArray = ["0","2","0","2","0","0","0","2","0","0","0","0","0","0","0"
 var color0 = { face1 : "#ffffff", face2 : "#acacac", face3 : "#595959" } // Hex values are x3 faster than RGB
 // var color1 = { face1 : "", face2 : "", face3 : "" }
 // var color2 = { face1 : "", face2 : "", face3 : "" }
-// var selectedColor = null
+var selectedColor = 1
 
 // // Preset Colors
 // var randomColours = [
@@ -110,17 +110,19 @@ var color0 = { face1 : "#ffffff", face2 : "#acacac", face3 : "#595959" } // Hex 
 function updateTiles() {
     for (let i = 0; i < tileCount; i++) { // '.length' slows down the code as it needs to be accessed each time 
         if (newColorArray[i] !== colorArray[i]) {
-            tileArray[i].setAttribute("class" ,  "f" + tileArray[i].dataset.face + "c" + colorArray[i] )
-            newColorArray[i] = newColorArray[i];
+            colorArray[i] = newColorArray[i];
             tileArray[i].dataset.color = newColorArray[i]
+            tileArray[i].setAttribute("class" ,  "f" + tileArray[i].dataset.face + "c" + colorArray[i] )
+            
+            
         }
     }
 }
 
 function renderTiles() {
-    for (let i = 0; i < tileCount; i++) { // '.length' slows down the code as it needs to be accessed each time 
+    for (let i = 0; i < tileCount; i++) { 
             tileArray[i].setAttribute("class" ,  "f" + tileArray[i].dataset.face + "c" + colorArray[i] )
-            newColorArray[i] = newColorArray[i];
+            colorArray[i] = newColorArray[i];
             tileArray[i].dataset.color = newColorArray[i]
     }
 }
@@ -162,22 +164,28 @@ indexTiles();
 // }
 
 // // Event Listeners
-// function initializeTileEvents(tileArray) {
-//     for (let i = 0; i < tileCount; i++) {
-//         tileArray[i].addEventListener("mouseover",( event ) => {
-//             if (mouseDown){
-//                 renderWithShading(selectedColor, event.target)
-//                 // drawColors(selectedColor, event.target )
-//             }
-//             return
-//         });
+function initializeTileEvents() {
+    for (let i = 0; i < tileCount; i++) {
+        
+        tileArray[i].addEventListener("mouseover",( event ) => {
+            // if (mouseDown){
+                var index = event.target.dataset.index.toString()
+                newColorArray[i] = selectedColor
+                updateTiles()
+                
+                // drawColors(selectedColor, event.target )
+            // }
+            
+        });
 
-//         // tileArray[i].addEventListener('touchmove',( event ) => {
-//         //     drawColors(selectedColor, event.target ) // alert pageX coordinate of touch point
-//         // }, false)
+        // tileArray[i].addEventListener('touchmove',( event ) => {
+        //     drawColors(selectedColor, event.target ) // alert pageX coordinate of touch point
+        // }, false)
 
-//     }
-// }
+    }
+}
+
+initializeTileEvents()
 
 
 
@@ -295,7 +303,7 @@ indexTiles();
 // initializeChangeColorTwoButton();
 // initializeSelectColorOneBrushBtn();
 
-var loaderDiv = document.getElementById('fadeIn')
+// var loaderDiv = document.getElementById('fadeIn')
 
 function fadeLoader() {
     loaderDiv.classList.add("ready");
