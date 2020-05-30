@@ -7,59 +7,52 @@
     background: rgba(0, 0, 0, 0.2);
   }
   
-  ::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.2);
+::-webkit-scrollbar-track {
+background: rgba(0, 0, 0, 0.2);
+}
+
+html, body, svg {
+    width: 90%;
+    height: 90%;
+    margin: 5%;
   }
 
- /* Hide scrollbars */
-/* html, body { margin:0; padding:0; overflow:hidden }  */
-/* svg { position:fixed; top:0; left:0; height:100%; width:100% } */
+/* .f1c0:hover, .f1c1:hover, .f1c2:hover {
+  cursor: url("../images/cursor-face1.svg"), auto;
+}
+.f2c0:hover, .f2c1:hover, .f2c2:hover {
+  cursor: url("../images/cursor-face2.svg"), auto;
+}
+.f3c0:hover, .f3c1:hover, .f3c2:hover {
+  cursor: url("../images/cursor-face3.svg"), auto;
+} */
 
-.pnt {
-    stroke: 0.05%
+
+.selected {
+    stroke-width: 0.2em;
+    stroke: black;
+    fill:rgba(0,0,0,0);
+    animation: flash 2s linear infinite;
+
 }
 
-@media (orientation: landscape) {
-    .factory {
-        height: 54%;
-        position: fixed;
-        top: 18%;
-        left: 0;
-        width: 95.5%;
+.nav-option {
+    stroke: none !important;
+    transition: fill 1.5s;
+    fill:unset; 
+}
+
+.nav-option:hover {
+    stroke: none !important;
+    transition: fill 1s;
+    fill: #000; 
+}
+
+@keyframes flash {
+    50% {
+      fill: rgba(0,0,0,1);
     }
-}
-
-path {
-    touch-action: none;
-}
-
-
-
-
-@media (orientation: portrait)  {
-    .factory {
-        height: 78%;
-        position: fixed;
-        top: 18%;
-        left: -5%;
-        width: 140%;
-        margin: -16%;
-    }
-}
-
-@media (orientation: portrait) and (min-width:420px) {
-    .factory {
-        height: 54%;
-        position: fixed;
-        top: 18%;
-        left: 0;
-        width: 96%;
-        margin: 2%;
-    }
-}
-
-
-
+  }
 
 #fadeIn {
     overflow: hidden;
@@ -72,11 +65,7 @@ path {
 }
 
 #fadeIn.ready {
-    -webkit-transition: opacity 3s ease-in-out;
-    -moz-transition: opacity 3s ease-in-out;
-    -ms-transition: opacity 3s ease-in-out;
-    -o-transition: opacity 3s ease-in-out;
-    transition: opacity 3s;
+    transition: opacity 1s;
      opacity: 0;
 }
 
