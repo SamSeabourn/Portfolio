@@ -17,6 +17,16 @@ html, body, svg {
     margin: 5%;
   }
 
+/* .f1c0:hover, .f1c1:hover, .f1c2:hover {
+  cursor: url("../images/cursor-face1.svg"), auto;
+}
+.f2c0:hover, .f2c1:hover, .f2c2:hover {
+  cursor: url("../images/cursor-face2.svg"), auto;
+}
+.f3c0:hover, .f3c1:hover, .f3c2:hover {
+  cursor: url("../images/cursor-face3.svg"), auto;
+} */
+
 
 .selected {
     stroke-width: 0.2em;
@@ -25,15 +35,18 @@ html, body, svg {
     animation: flash 2s linear infinite;
 
 }
+
 .nav-option {
     stroke: none !important;
+    transition: fill 1.5s;
+    fill:unset; 
 }
 
 .nav-option:hover {
     stroke: none !important;
-    animation: flash 2s linear infinite;
+    transition: fill 1s;
+    fill: #000; 
 }
-
 
 @keyframes flash {
     50% {
@@ -52,11 +65,7 @@ html, body, svg {
 }
 
 #fadeIn.ready {
-    -webkit-transition: opacity 3s ease-in-out;
-    -moz-transition: opacity 3s ease-in-out;
-    -ms-transition: opacity 3s ease-in-out;
-    -o-transition: opacity 3s ease-in-out;
-    transition: opacity 3s;
+    transition: opacity 1s;
      opacity: 0;
 }
 

@@ -33,11 +33,11 @@ function renderTiles() {
     }
 }
 
-function indexTiles() {
-    for (let i = 0; i < tileCount; i++) {
-        tileArray[i].setAttribute('data-index', "" + i + "")
-    }
-}
+// function indexTiles() {
+//     for (let i = 0; i < tileCount; i++) {
+//         tileArray[i].setAttribute('data-index', "" + i + "")
+//     }
+// }
 
 function initializeTileEvents() {
     for (let i = 0; i < tileCount; i++) {
@@ -56,7 +56,7 @@ function initializeTileEvents() {
 function fadeLoader() {
     var loaderDiv = document.getElementById('fadeIn')
     loaderDiv.classList.add("ready");
-    setTimeout( () => { loaderDiv.remove() }, 3000);
+    setTimeout( () => { loaderDiv.remove() }, 1000);
 }
 
 // paint functions
@@ -93,7 +93,7 @@ function updateColor2Pallete(){
 }
 
 function cycleColorPalleteSelection(colorPalletSelection){
-    if (colorPalletSelection < 16 ){ // 16 is the total pallet count
+    if (colorPalletSelection < 16 ){ // 16 is the total pallete count
         return colorPalletSelection + 1
     } else {
         return 0
@@ -169,7 +169,7 @@ cleanAllBtn.addEventListener("click", () => {
 //Initalizers
 buildTileArray();
 renderTiles()
-indexTiles();
+// indexTiles();
 initializeTileEvents()
 updateColor1Pallete()
 updateColor2Pallete()
