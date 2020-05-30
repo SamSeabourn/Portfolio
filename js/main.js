@@ -134,14 +134,14 @@ var t1 = performance.now()
 console.log("Call to renderTiles took " + (t1 - t0) + " milliseconds.")
 
 
-// var mouseDown = 0;
+var mouseDown = 0;
 
-// document.body.onmousedown = function() { 
-//   ++mouseDown;
-// }
-// document.body.onmouseup = function() {
-//   --mouseDown;
-// }
+document.body.onmousedown = function() { 
+  ++mouseDown;
+}
+document.body.onmouseup = function() {
+  --mouseDown;
+}
 
 // // buttons
 // var changeColorOneBtn = document.getElementById("changeColorOne") 
@@ -168,14 +168,11 @@ function initializeTileEvents() {
     for (let i = 0; i < tileCount; i++) {
         
         tileArray[i].addEventListener("mouseover",( event ) => {
-            // if (mouseDown){
+            if (mouseDown){
                 var index = event.target.dataset.index.toString()
                 newColorArray[i] = selectedColor
                 updateTiles()
-                
-                // drawColors(selectedColor, event.target )
-            // }
-            
+            }
         });
 
         // tileArray[i].addEventListener('touchmove',( event ) => {
