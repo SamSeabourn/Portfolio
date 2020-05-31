@@ -56,7 +56,7 @@ function initializeTileEvents() {
 function fadeLoader() {
     var loaderDiv = document.getElementById('fadeIn')
     loaderDiv.classList.add("ready");
-    setTimeout( () => { loaderDiv.remove() }, 1000);
+    setTimeout( () => { loaderDiv.remove() }, 5000);
 }
 
 // paint functions
@@ -159,15 +159,11 @@ cleanAllBtn.addEventListener("click", () => {
             updateTiles()
         }
     }
-
-
-
 });
 
 
 
 //Initalizers
-buildTileArray();
 renderTiles()
 // indexTiles();
 initializeTileEvents()
@@ -175,7 +171,8 @@ updateColor1Pallete()
 updateColor2Pallete()
 
 //clearLoader
-fadeLoader();
+setTimeout( () => { fadeLoader() }, 3000);
+
 
 
 
