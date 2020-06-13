@@ -57,7 +57,7 @@ html, body, svg {
 }
 
 #fadeIn.ready {
-     transition: opacity 5s;
+     transition: opacity 1s;
      opacity: 0;
 }
 
