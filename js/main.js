@@ -21,15 +21,14 @@ function updateTiles() {
         if (newColorArray[i] !== colorArray[i]) {
             colorArray[i] = newColorArray[i];
             tileArray[i].dataset.color = newColorArray[i]
-            tileArray[i].setAttribute("class" ,  "f" + tileArray[i].dataset.face + "c" + colorArray[i] ) 
-            break;
+            tileArray[i].setAttribute("class" , "f" + tileArray[i].dataset.face + "c" + colorArray[i] ) 
         }
     }
 }
 
 function renderTiles() {
     for (let i = 0; i < tileCount; i++) { 
-            tileArray[i].setAttribute("class" ,  "f" + tileArray[i].dataset.face + "c" + colorArray[i] )
+            tileArray[i].setAttribute("class" , "f" + tileArray[i].dataset.face + "c" + colorArray[i] )
     }
 }
 
