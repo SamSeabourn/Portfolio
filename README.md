@@ -1,6 +1,6 @@
 
 # SVG performance testing
-****
+
 ### **About this SVG experiment**
 
 Wanting to test SVG performance I decided to create a dynamic SVG that could be edited with a colour change on hover. In order to really test SVG performance I decided to create an image with over 5000 paths and see what the SVG's could really do.
